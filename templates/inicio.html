@@ -3,73 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <title>Souza Restaurante</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/inicio.css') }}">
+    <!-- Fuente elegante de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-   <header>
 
-        <menu>
-            <a href="/">Inicio</a>
-            <a href="/mar">Mar</a>
-            <a href="/tierra">Tierra</a>
-            <a href="/especialidades">Especialidades</a>
-            <a href="/reserva">Reservas</a>
-            <a href="/contacto">Contacto</a>
-            <a href="/nosotros">Sobre Nosotros</a>
-        </menu>
+    <!-- NAVBAR - barra de navegacion superior -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+            <!-- Nombre del restaurante -->
+            <a class="navbar-brand" href="/">SOUZA</a>
+
+            <!-- Boton para menu en celular -->
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Links del menu -->
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+
+                    <!-- Menu desplegable de tipos de comida -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tipos de comida</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/mar">Mar</a></li>
+                            <li><a class="dropdown-item" href="/tierra">Tierra</a></li>
+                            <li><a class="dropdown-item" href="/especialidades">Especialidades</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="/reserva">Reservas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contacto">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/nosotros">Sobre Nosotros</a></li>
+                </ul>
+            </div>
+
+        </nav>
     </header>
-   
-<div id="carrusel" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
 
-    <div class="carousel-item active">
-      <img src="{{ url_for('static', filename='img/1.png') }}" class="d-block w-100" alt="imagen 1">
+    <!-- CARRUSEL - imagenes que rotan -->
+    <div id="carrusel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+            <!-- Primera imagen -->
+            <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='img/1.png') }}" class="d-block w-100" alt="imagen 1">
+            </div>
+
+            <!-- Segunda imagen -->
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='img/2.png') }}" class="d-block w-100" alt="imagen 2">
+            </div>
+
+        </div>
+
+        <!-- Boton para ir a la imagen anterior -->
+        <button class="carousel-control-prev" data-bs-target="#carrusel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <!-- Boton para ir a la imagen siguiente -->
+        <button class="carousel-control-next" data-bs-target="#carrusel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
     </div>
 
-    <div class="carousel-item">
-      <img src="{{ url_for('static', filename='img/2.png') }}" class="d-block w-100" alt="imagen 2">
+    <!-- BOTON DE RESERVA -->
+    <button class="btn-reserva" onclick="window.location.href='/reserva'">RESERVA YA</button>
+
+    <!-- TARJETAS DE INFORMACION -->
+    <div class="container my-5">
+        <div class="row justify-content-center gap-3">
+
+            <!-- Tarjeta de Sobre Nosotros -->
+            <div class="col-md-3">
+                <div class="card text-center card-hover" style="border-color: gold; overflow: hidden; position: relative;">
+                    <!-- Imagen de la tarjeta -->
+<img src="{{ url_for('static', filename='img/cocineros.png') }}" class="w-100">
+                    <!-- Informacion que aparece al pasar el mouse -->
+                    <div class="overlay">
+                        <h5 style="color: gold; font-family: 'Cormorant Garamond', serif; font-size: 22px;">Sobre Nosotros</h5>
+                        <p style="color: white;">Somos un restaurante fundado en 2010 con la mision de ofrecer la mejor gastronomia regional.</p>
+                        <a href="/nosotros" class="btn btn-outline-warning">Conocenos</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta de Tipos de Comida -->
+            <div class="col-md-3">
+                <div class="card text-center card-hover" style="border-color: gold; overflow: hidden; position: relative;">
+                    <!-- Imagen de la tarjeta -->
+<img src="{{ url_for('static', filename='img/comida.png') }}" class="w-100">
+                    <!-- Informacion que aparece al pasar el mouse -->
+                    <div class="overlay">
+                        <h5 style="color: gold; font-family: 'Cormorant Garamond', serif; font-size: 22px;">Tipos de Comida</h5>
+                        <p style="color: white;">Explora nuestra variedad de platos: mar, tierra y especialidades unicas.</p>
+                        <a href="/especialidades" class="btn btn-outline-warning">Ver todo</a>
+                    </div>
+                    
+                </div>
+                <br>
+            </div>
+
+        </div>
     </div>
 
-  </div>
-
-  <button class="carousel-control-prev" data-bs-target="#carrusel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-
-  <button class="carousel-control-next" data-bs-target="#carrusel" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
-</div>
-
-    <div>
-        <h1>SOUZA</h1>
-        <h3>Lo mejor de la gastronomía en un mismo lugar</h3>
-    </div>
-
-    <button onclick="window.location.href='/reserva'">RESERVA YA</button>
-
-    <ul>
-        <li><a href="/mar">MAR</a></li>
-        <li><a href="/tierra">TIERRA</a></li>
-        <li><a href="/especialidades">ESPECIALIDADES</a></li>
-    </ul>
-     
-    <p>sobre nosotros</p>
-    <br>
-    <p>Restaurante fundado en 2010 con la misión de ofrecer la mejor gastronomía regional.</p>
-    <p>Síguenos en redes sociales</p>
-    <ul>
-        <li><a href="https://www.facebook.com/souza">Facebook</a></li>
-        <li><a href="https://www.instagram.com/souza">Instagram</a></li>
-        <li><a href="https://www.twitter.com/souza">Twitter</a></li>
-    </ul>
-
+    <!-- FOOTER - pie de pagina fijo -->
     <footer>
-        <p>&copy; 2023 Souza Restaurante. Todos los derechos reservados.</p>
+        <p>Siguenos en redes sociales</p>
+        <!-- Lista de redes sociales -->
+        <ul class="redes_sociales">
+            <li><a href="https://www.facebook.com/souza">Facebook</a></li>
+            <li><a href="https://www.instagram.com/souza">Instagram</a></li>
+            <li><a href="https://www.twitter.com/souza">Twitter</a></li>
+        </ul>
     </footer>
 
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
- 
+    <!-- Bootstrap JavaScript - necesario para el carrusel y el menu desplegable -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

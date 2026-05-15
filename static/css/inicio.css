@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&display=swap');
+
+/* ================================
+   VARIABLES DE COLOR
+   ================================ */
+:root {
+    --fondo: #0a0a0a;
+    --dorado: #c9a84c;
+    --dorado-claro: #e8d5a3;
+    --gris-oscuro: #1a1a1a;
+    --blanco: #f5f5f0;
+}
+
+/* ================================
+   ESTILOS GENERALES
+   ================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--fondo);
+    color: var(--blanco);
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* ================================
+   NAVBAR
+   ================================ */
+.navbar-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    letter-spacing: 6px;
+    color: var(--dorado) !important;
+    /* Animacion de entrada del nombre */
+    animation: entradaNombre 1.5s ease;
+}
+
+@keyframes entradaNombre {
+    0% { opacity: 0; letter-spacing: 20px; }
+    100% { opacity: 1; letter-spacing: 6px; }
+}
+
+.navbar-brand::after {
+    content: "LO MEJOR DE LA GASTRONOMIA EN UN MISMO LUGAR";
+    display: block;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--dorado-claro);
+    text-transform: uppercase;
+}
+
+.nav-link {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: var(--blanco) !important;
+    /* Transicion suave al pasar el mouse */
+    transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--dorado) !important;
+    /* Las letras se separan un poco al pasar el mouse */
+    letter-spacing: 5px;
+}
+
+.dropdown-menu {
+    background-color: #000000;
+    border: 1px solid var(--dorado);
+    /* Animacion de aparicion del dropdown */
+    animation: aparecer 0.3s ease;
+}
+
+@keyframes aparecer {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-item {
+    color: var(--blanco);
+    letter-spacing: 2px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #000000;
+    color: var(--dorado);
+    /* Se corre un poco a la derecha al pasar el mouse */
+    padding-left: 25px;
+}
+
+/* ================================
+   BOTON RESERVA
+   ================================ */
+.btn-reserva {
+    display: block;
+    margin: 50px auto;
+    padding: 15px 60px;
+    background-color: transparent;
+    color: var(--dorado);
+    border: 1px solid var(--dorado);
+    border-radius: 50px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    cursor: pointer;
+    /* Animacion de pulso continuo */
+    animation: pulso 3s infinite;
+    transition: all 0.4s ease;
+}
+
+@keyframes pulso {
+    0% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.4); }
+    50% { box-shadow: 0 0 20px 10px rgba(201, 168, 76, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0); }
+}
+
+.btn-reserva:hover {
+    background-color: var(--dorado);
+    color: #000000;
+    /* Para la animacion al pasar el mouse */
+    animation: none;
+    transform: scale(1.05);
+}
+
+/* ================================
+   TARJETAS
+   ================================ */
+.card {
+    background-color: var(--gris-oscuro) !important;
+    border: 1px solid var(--dorado) !important;
+}
+
+.card-hover {
+    transition: all 0.4s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(201, 168, 76, 0.2);
+}
+
+.card-hover img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card.card-hover {
+    height: 200px;
+}
+
+/* Overlay que aparece al pasar el mouse */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.88);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.4s ease;
+    padding: 25px;
+}
+
+.card-hover:hover .overlay {
+    opacity: 1;
+}
+
+.overlay h5 {
+    color: var(--dorado);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    /* El titulo baja desde arriba */
+    transform: translateY(-20px);
+    transition: transform 0.4s ease;
+}
+
+.card-hover:hover .overlay h5 {
+    transform: translateY(0);
+}
+
+.overlay p {
+    color: var(--blanco);
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    /* El texto sube desde abajo */
+    transform: translateY(20px);
+    transition: transform 0.4s ease 0.1s;
+}
+
+.card-hover:hover .overlay p {
+    transform: translateY(0);
+}
+
+/* ================================
+   REDES SOCIALES
+   ================================ */
+.redes_sociales {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 10px 0 0 0;
+}
+
+.redes_sociales li {
+    transition: all 0.3s ease;
+}
+
+.redes_sociales li:hover {
+    transform: translateY(-8px);
+}
+
+.redes_sociales a {
+    color: var(--dorado-claro);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-family: 'Cormorant Garamond', serif;
+    transition: color 0.3s ease;
+}
+
+.redes_sociales a:hover {
+    color: var(--dorado);
+}
+
+/* ================================
+   FOOTER
+   ================================ */
+footer {
+    bottom: 0;
+    width: 100%;
+    background-color: #000000;
+    border-top: 1px solid var(--dorado);
+    padding: 12px 0;
+    text-align: center;
+}
+
+footer p {
+    margin-top: 10px;
+    color: var(--dorado-claro);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+/* Efecto de destello magico al pasar el mouse */
+.card-hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(201, 168, 76, 0.3),
+        transparent
+    );
+    /* Animacion del destello */
+    transition: left 0.6s ease;
+    z-index: 1;
+}
+
+.card-hover:hover::before {
+    left: 150%;
+}
